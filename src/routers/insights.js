@@ -5,13 +5,7 @@ const insightsController = require("../controllers/insightsController");
 
 router.get("/categories", catchErrors(insightsController.categories));
 
-router.get("/cashflow", async (req, res, next) => {
-  try {
-    res.status(501).json({ message: "Not Implemented" });
-  } catch (err) {
-    return next(err);
-  }
-});
+router.get("/cashflow", catchErrors(insightsController.cashflow));
 
 router.get("/merchants", async (req, res, next) => {
   try {

@@ -12,14 +12,15 @@ exports.createCategoryObject = (categories, arrayOfObjects) => {
   return object;
 };
 
-exports.createUniqueCategories = data => {
-  const duplicateCategories = data.map(object => object.category);
-  const uniqueCategories = [...new Set(duplicateCategories)];
-  return uniqueCategories;
+exports.createUniquePropertiesArray = (data, property) => {
+  const duplicateProperties = data.map(object => object[property]);
+  const uniquePropertiesArray = [...new Set(duplicateProperties)];
+  console.log("unique properties array", uniquePropertiesArray);
+  return uniquePropertiesArray;
 };
 
-exports.groupCategoryItems = (data, categoryName) => {
-  return data.filter(object => object.category === categoryName);
+exports.groupItemsByProperty = (data, propertyName, propertyValue) => {
+  return data.filter(object => object[propertyName] === propertyValue);
 };
 
 exports.calculateTotalValue = categoryItems => {

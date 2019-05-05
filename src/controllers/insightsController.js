@@ -21,14 +21,21 @@ exports.getData = async (req, res) => {
   });
   return data;
 };
+exports.categories = async (req, res) => {
+  const data = await this.getData();
+  const categoryNames = createUniquePropertiesArray(data || [], "category");
+  const arrayOfCategoryObjects = categoryNames.map(category =>
     this.calculateCategories(data, category)
   );
-  const processedData = createCategoryObject(categoryNames, arrayOfObjects);
+  const processedData = createCategoryObject(
+    categoryNames,
+    arrayOfCategoryObjects
+  );
   res.json(processedData);
 };
 
 exports.calculateCategories = (data, categoryName) => {
-  const categoryItems = groupCategoryItems(data, categoryName);
+  const categoryItems = groupItemsByProperty(data, "category", categoryName);
   const totalValue = calculateTotalValue(categoryItems);
   const totalNumber = calculateTotalNumber(categoryItems);
   const averageValue = calculateAverageValue(totalValue, totalNumber);

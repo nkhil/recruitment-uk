@@ -1,12 +1,12 @@
 const Request = require("request");
 const {
-  createUniqueCategories,
+  createUniquePropertiesArray,
   createObject,
   calculateAverageValue,
   calculateTotalNumber,
   calculateTotalValue,
-  groupCategoryItems,
-  createCategoryObject
+  groupItemsByProperty,
+  createCategoryObject,
 } = require("../helpers/helpers");
 
 let data;

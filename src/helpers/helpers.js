@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 exports.catchErrors = fn => {
   return function(req, res, next) {
     return fn(req, res, next).catch(next);
@@ -44,4 +46,8 @@ exports.createObject = (totalNumber, totalValue, averageValue) => {
     totalValue,
     averageValue
   };
+};
+
+exports.formatDate = dateString => {
+  return moment(dateString).format("DD/MM/YYYY");
 };

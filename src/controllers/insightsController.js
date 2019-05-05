@@ -11,16 +11,16 @@ const {
 
 let data;
 
-exports.categories = async (req, res) => {
+exports.getData = async (req, res) => {
   const endpoint = "https://transactions.spokedev.xyz/transactions";
   Request.get(endpoint, async (error, response, body) => {
     if (error) {
       return console.dir(error);
     }
-    data = JSON.parse(body);
+    data = await JSON.parse(body);
   });
-  const categoryNames = await createUniqueCategories(data || []);
-  const arrayOfObjects = categoryNames.map(category =>
+  return data;
+};
     this.calculateCategories(data, category)
   );
   const processedData = createCategoryObject(categoryNames, arrayOfObjects);
